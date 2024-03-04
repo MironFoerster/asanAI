@@ -1,0 +1,79 @@
+{
+    "greeting": {
+        "type": "message",
+        "text": "Hello Learner, Lets get started with our forst Lesson!",
+        "next": "question1"
+    },
+    "question1": {
+        "type": "question",
+        "text": "What do you want to learn more about?",
+        "options": [
+            {
+                "answer": "Classification",
+                "next": ""
+            }
+        ]
+    },
+    "quiz1": {
+        "type": "quiz",
+        "questions": [
+            {
+                "text": "What does classification mean?",
+                "options": [
+                    {
+                        "answer": "exploring the universe",
+                        "correct": false
+                    },
+                    {
+                        "answer": "building a house",
+                        "correct": false
+                    },
+                    {
+                        "answer": "assigning a category to an item",
+                        "correct": true
+                    }
+                ]
+            },
+            {
+                "text": "What does tensor mean?",
+                "options": [
+                    {
+                        "answer": "exploring the universe",
+                        "correct": false
+                    },
+                    {
+                        "answer": "a datastructure holding numbers",
+                        "correct": true
+                    },
+                    {
+                        "answer": "assigning a category to an item",
+                        "correct": false
+                    }
+                ]
+            },
+            {
+                "text": "What does backpropagation mean?",
+                "options": [
+                    {
+                        "answer": "computing the influence of parameters on the loss of the model",
+                        "correct": true
+                    },
+                    {
+                        "answer": "building a house",
+                        "correct": false
+                    },
+                    {
+                        "answer": "assigning a category to an item",
+                        "correct": false
+                    }
+                ]
+            }
+        ],
+        "concepts": [
+            "classification",
+            "tensor",
+            "backpropagation"
+        ]
+    }
+
+}

@@ -1,0 +1,18 @@
+<div class="details-card">
+    <h3 class="card-title">{{ itemDetails.title }}</h3>
+    
+    @if (isLabDetails(itemDetails)) {
+        <h2>{{ itemDetails.name }}</h2>
+        <h3>by {{ itemDetails.username }}</h3>
+        <button [routerLink]="['/lab', itemDetails.id]">{{ itemDetails.access_level == "owning"? "Open": "View"}}({{ itemDetails.access_level }})</button>
+        <button [routerLink]="['/lab']" [queryParams]="{fromLabId: itemDetails.id}">Create Your Copy</button>
+        <button [routerLink]="['/lab']" [queryParams]="{fromModelId: itemDetails.modelId}">Use Model as Startingpoint</button>
+        <button [routerLink]="['/lab']" [queryParams]="{fromDataId: itemDetails.pipeId}">Use Data as Startingpoint</button>
+    } @else if (isModelDetails(itemDetails)) {
+        <button [routerLink]="['/lab']" [queryParams]="{fromModelId: itemDetails.id}">Use Model as Startingpoint</button>
+    } @else if (isPipeDetails(itemDetails)) {
+        <button [routerLink]="['/lab']" [queryParams]="{fromDataId: itemDetails.id}">Use Data as Startingpoint</button>
+    } @else if (isLessonDetails(itemDetails)) {
+        <button [routerLink]="['/lesson', itemDetails.id]" [queryParams]="{fromModelId: itemDetails.id}">Start Lesson</button>
+    }
+    </div>

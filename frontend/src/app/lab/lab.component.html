@@ -1,0 +1,22 @@
+<h1>This is the {{ lab.data.name }} Lab</h1>
+<div>You are {{ accessLevel() }} this lab</div>
+@if (accessLevel() == "owning") {
+    <form [formGroup]="shareForm" (ngSubmit)="shareSubmit()">
+        <input id="invite-input" type="text" formControlName="username" placeholder="Share by Username">
+        <button type="submit">Share</button>
+    </form>
+}
+
+<app-model [model]="lab.data.model"></app-model>
+
+<button [routerLink]="['/lab']" [queryParams]="{fromLabId: lab.data.id}">Create Your Copy</button>
+<button [routerLink]="['/lab']" [queryParams]="{fromModelId: lab.data.details?.modelId}">Use Model as Startingpoint</button>
+<button [routerLink]="['/lab']" [queryParams]="{fromDataId: lab.data.details?.pipeId}">Use Data as Startingpoint</button>
+
+//TODO: Invites, permission storing and handling, browse type checking
+
+@if (showToast) {
+    <div class="toast">
+        {{toastMessage}}
+    </div>
+}

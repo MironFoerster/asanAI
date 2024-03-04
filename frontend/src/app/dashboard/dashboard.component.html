@@ -1,0 +1,16 @@
+<div id="dashboard-container">
+    <div id="recommend">this is {{ auth.getUsername() }}'s dashboard</div>
+    <button routerLink="/lab" id="lab-btn" class="button-champ">Create New Lab</button>
+    <h3>Your Labs</h3>
+    <div id="labs" class="labs-container">
+        @for(lab of labs; track lab.id) {
+            <app-details-card [itemDetails]="lab"></app-details-card>
+        }
+    </div>
+    <h3>Labs shared with you</h3>
+    <div id="shared-labs" class="labs-container">
+        @for(lab of shared_labs; track lab.id) {
+            <app-details-card [itemDetails]="lab"></app-details-card>
+        }
+    </div>
+</div>

@@ -1,0 +1,50 @@
+#nav-bar
+    position: fixed
+    top: 10px
+    left: 50%
+    transform: translateX(-50%)
+    border-radius: .5em
+    display: flex
+    flex-direction: row
+    align-items: center
+    justify-content: space-around
+    background: var(--white)
+    transition: height 0.2s ease-out
+    &::before
+        content: "Browse:"
+        position: absolute
+        color: transparentize(black, 0.7)
+        left: -100px
+        top: 50%
+        transform: translateY(-50%)
+
+    &.scrolled
+        height: 40px
+        box-shadow: 0 0 4px black
+
+        .nav-item::after
+            bottom: 5px
+
+
+    .nav-item
+        position: relative
+        cursor: pointer
+        font-family: "mid"
+
+        &::after
+            content: ""
+            background: var(--purple)
+            position: absolute
+            bottom: -10px
+            left: 50%
+            height: 5px
+            width: 0
+            transition: width 0.1s ease-out, bottom 0.2s ease-out
+            border-radius: 2.5px
+            transform: translateX(-50%)
+
+        &.active-nav::after
+            width: 80%
+
+        &:hover::after
+            width: 80%

@@ -1,0 +1,11 @@
+<div class="auth-container">
+    <div id="signup-card" class="auth-card">
+        <h1>Create your Account</h1>
+        <div>already have one? <a routerLink="/signin">Sign In</a></div>
+        <input type="email" name="email" [(ngModel)]="signupData.email" placeholder="E-Mail">
+        <input type="text" name="username" [(ngModel)]="signupData.username" placeholder="Username">
+        <input type="password" name="password" [(ngModel)]="signupData.password" placeholder="Password">
+        <input type="password" name="password" [(ngModel)]="signupData.password" placeholder="Confirm Password">
+        <button class="button-bold" (click)="signupUser()">Sign Up</button>
+    </div>
+</div>

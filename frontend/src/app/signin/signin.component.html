@@ -1,0 +1,10 @@
+<div class="auth-container">
+    <div id="signin-card" class="auth-card">
+        <h1>Welcome Back</h1>
+        <div>dont have an account yet? <a routerLink="/signup">Sign Up</a></div>
+        <input autocomplete="off" type="text" name="username" class="signin-input" [(ngModel)]="signinData.username" placeholder="Username">
+        <input type="password" name="password" class="signin-input" [(ngModel)]="signinData.password" placeholder="Password">
+        <button class="button-bold" (click)="signinUser()">Sign In</button>
+        
+    </div>
+</div>

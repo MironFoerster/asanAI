@@ -1,0 +1,8 @@
+<p>init-chosen-card works!</p>
+
+<img src="{{chosenDetails?.thumbnailUrl}}" alt="cardType()">
+<h3>{{ chosenDetails?.title }}</h3>
+<p>{{ chosenDetails?.summary }}</p>
+<p>{{ chosenDetails?.stats }}</p>
+
+<button (click)="triggerRemoveSelf()" class="remove-btn">X</button>

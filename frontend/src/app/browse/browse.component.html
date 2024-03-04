@@ -1,0 +1,5 @@
+<div id="browse-container">
+    @for (item of items; track item.id) {
+        <app-details-card [itemDetails]="item"></app-details-card>
+    }
+</div>

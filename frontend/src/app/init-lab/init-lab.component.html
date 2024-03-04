@@ -1,0 +1,32 @@
+<h2>choose where to start:</h2>
+<div id="init-lab-container">
+    <div id="chosen-cards-container">
+        @defer (when chosenDataDetails(); prefetch on idle) {
+            @if (chosenDataDetails()) {
+                <app-init-chosen-card (removeChosen)="chosenDataDetails.set(undefined)" [chosenDetails]="chosenDataDetails()"></app-init-chosen-card>
+            } @else {
+                <div class="init-chooser-blank">Choose training data</div>
+            }
+        } @placeholder {
+            <div class="init-chooser-blank">Choose training data</div>
+        }
+
+        @defer (when chosenModelDetails(); prefetch on idle) {
+            @if (chosenModelDetails()) {
+                <app-init-chosen-card (removeChosen)="chosenModelDetails.set(undefined)" [chosenDetails]="chosenModelDetails()"></app-init-chosen-card>
+            } @else {
+                <div class="init-chooser-blank">Choose training data</div>
+            }
+        } @placeholder {
+            <div class="init-chooser-blank">Choose training data</div>
+        }
+    </div>
+    <button>{{ initLabButtonLabel() }}</button>
+
+    @defer (when choosingFrom(); prefetch on idle) {
+        @if (choosingFrom()) {
+            <app-init-chooser [chooserType]="choosingFrom()"></app-init-chooser>
+        }
+    }
+
+</div>

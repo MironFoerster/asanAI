@@ -1,0 +1,18 @@
+<button routerLink="" id="logo" class="button-faint">asan<span>AI</span></button>
+<div id="auth-corner">
+    @if (isSignIn || isSignUp) {
+        or
+    }
+    @if (!isSignIn && !auth.isAuthenticated()) {
+        <button routerLink="/signin" id="signin-btn" class="button-shy">Sign In</button>
+    }
+    @if (!isSignUp && !auth.isAuthenticated()) {
+        <button routerLink="/signup" id="signup-btn" [class.button-bold]="!isSignIn" [class.button-shy]="isSignIn">Sign Up</button>
+    }
+    @if (auth.isAuthenticated()) {
+        <button id="profile-btn" routerLink="/dashboard">{{ auth.getUsername() }}'s dashboard</button>
+        <button (click)="auth.signoutUser()" id="signout-btn" class="button-shy">Logout</button>
+    }
+</div>
+
+<router-outlet></router-outlet>

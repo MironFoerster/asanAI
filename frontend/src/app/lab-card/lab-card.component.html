@@ -1,0 +1,7 @@
+<div class="lab-card">
+    <h3 class="card-title">{{ lab.name }}</h3>
+    <button [routerLink]="['/lab', lab.id]">{{enterWithRole}}</button>
+    <button [routerLink]="['/lab', lab.id]" [queryParams]="{fromLabId: lab.id}">Use Lab as Startingpoint</button>
+    <button [routerLink]="['/lab', lab.id]" [queryParams]="{fromModelId: lab.modelId}">Use Model as Startingpoint</button>
+    <button [routerLink]="['/lab', lab.id]" [queryParams]="{fromDataId: lab.pipeId}">Use Data as Startingpoint</button>
+</div>

@@ -1,0 +1,21 @@
+<div id="init-chooser-container">
+    <p>init-chooser works!</p>
+    <div id="cards-pane">
+        @for (section of sectionedCards(); track section.title) {
+            <h3>{{ section.title }}</h3>
+            @for (cardDetails of section.cards; track cardDetails.title) {
+                <app-init-chooser-card [cardDetails]="cardDetails"></app-init-chooser-card>
+            } @empty {
+                <p>no cards here</p>
+            }
+        } @empty {
+            <p>no sections here</p>
+        }
+    </div>
+    <button id="chooser-upload-btn" (click)="showUploadDataset.set(true)"></button>
+    @defer (when showUploadDataset(); prefetch on idle) {
+        @if (showUploadDataset()) {
+            <app-upload-dataset></app-upload-dataset>
+        }
+    }
+</div>
