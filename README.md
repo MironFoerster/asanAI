@@ -143,3 +143,13 @@ post_max_size = 100M;
 # Sponsored by
 
 ![Sponsors](_gui/sponsored_by.png "Sponsored by")
+
+# Setup new ui docker
+
+### Uinx
+
+`./new_docker.sh`
+
+### Windows
+
+`./new_docker.ps1`
