@@ -1,0 +1,23 @@
+#layer-conf-container
+    width: 50vw
+    border-radius: 15px
+    background: white
+    position: fixed
+    bottom: -25vh
+    left: 50vw
+    transform: translateX(-50%)
+    opacity: 0
+    transition: all 0.3s ease-in-out
+    padding: 20px
+    display: flex
+    flex-direction: row
+    align-items: center
+    justify-content: space-around
+    gap: 20px
+    flex-wrap: wrap
+
+
+
+    &.open
+        bottom: 30px
+        opacity: 1

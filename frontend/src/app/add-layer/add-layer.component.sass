@@ -1,0 +1,60 @@
+#add-layer-cont
+    background: white
+    border-radius: 10px
+    position: absolute
+    left: 20px
+    bottom: 20px
+    overflow-x: scroll
+    overflow-y: hidden
+    width: 60vw
+
+    &::-webkit-scrollbar
+        display: none
+
+    -ms-overflow-style: none
+    scrollbar-width: none
+
+    transition: all 0.2s ease-in-out
+
+    &.dragging
+        cursor: grabbing
+    //     opacity: 0
+    //     bottom: -50px
+
+    #add-layer-scroller
+        display: flex
+        gap: 10px
+        width: 172em
+        padding: 10px
+        overflow: hidden
+        cursor: inherit
+
+        .layer-choice-group
+            padding: 10px
+            border-radius: 10px
+            background: #dbdbdb
+            display: flex
+            align-items: center
+            justify-content: flex-start
+            gap: 10px
+            flex-wrap: wrap
+            cursor: inherit
+
+            .layer-choice
+                font-size: 15px
+                background: #acabab
+                padding: 0 5px
+                border-radius: 10px
+                border: 1px solid black
+                cursor: grab
+                position: relative
+                
+                -webkit-user-select: none
+                -moz-user-select: none
+                -ms-user-select: none
+                user-select: none
+
+                &.dragging
+                    cursor: grabbing
+
+            

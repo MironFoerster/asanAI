@@ -1,19 +1,79 @@
-<h1>This is the {{ lab.data.name }} Lab</h1>
-<div>You are {{ accessLevel() }} this lab</div>
-@if (accessLevel() == "owning") {
-    <form [formGroup]="shareForm" (ngSubmit)="shareSubmit()">
-        <input id="invite-input" type="text" formControlName="username" placeholder="Share by Username">
-        <button type="submit">Share</button>
-    </form>
-}
+<div id="lab-container">
+    <div id="lab-header">
+        <div id="left-header">
+            <div id="lab-title" [style.--by-content]="getAuthorization() == 'viewing'?'by '+lab.data.details?.username:undefined">{{ lab.data.name }}</div>
+            @if (!!lab.data.details?.latest_v) {
+                <div id="version-container">
+                    <div class="main-button">{{ !!version?version:lab.data.details?.latest_v+" (latest)" }}</div>
+                    <div id="versions-list" class="dropdown-list" [class.dropped]="showVersionsList">
+                        @for (version of versions; track version.tag) {
+                            <div class="item">
+                                {{ version.tag }} {{ version.commit_message }} {{ version.timestamp }}
+                            </div>
+                        }
+                    </div>
+                </div>
+            }
+        </div>
 
-<app-model [model]="lab.data.model"></app-model>
+        <div id="right-header">
+            @if(getAuthorization() == 'owning') {
+                <button id="save-version-button" (click)="showSaveVersion = true;$event.stopPropagation()">
+                    Save Version
+                    @if(showSaveVersion) {
+                        <div id="save-version-popup">
+                            <input type="text" [(ngModel)]="commitMessage" placeholder="Enter Message" maxlength="100">
+                            <button (click)="saveVersion()"></button>
+                        </div>
+                    }
+                </button>
+                <form [formGroup]="shareForm" (ngSubmit)="shareSubmit()">
+                    <input id="invite-input" type="text" formControlName="username" placeholder="Share by Username">
+                    <button type="submit">Share</button>
+                </form>
+                <div class="dropdown-list" [class.dropped]="showCopyDropdown">
+                    <div class="dropdown-item" [routerLink]="['/lab']" [queryParams]="{fromLabId: lab.data.id}">
+                        Duplicate & Edit
+                        <div class="arrow"></div>
+                    </div>
+                    <div class="dropdown-item">
+                        
+                    </div>
+                </div>
+            } @else {
+                <div class="dropdown">
+                    <div class="split-button">
+                        <button class="main-button" [routerLink]="['/lab']" [queryParams]="{fromLabId: lab.data.id}">Copy & Edit</button>
+                    <button class="drop-button" (click)="toggleCopyDropdown($event)">
+                        <div class="arrow"></div>
+                    </button>
+                    </div>
+                    <div class="dropdown-list" [class.dropped]="showCopyDropdown">
+                        <div class="dropdown-item" [routerLink]="['/lab']" [queryParams]="{fromLabId: lab.data.id}">Copy & Edit</div>
+                        <div class="dropdown-item" [routerLink]="['/lab']" [queryParams]="{fromModelId: lab.data.details?.modelId}">Copy Model & Edit</div>
+                        <div class="dropdown-item" [routerLink]="['/lab']" [queryParams]="{fromDataId: lab.data.details?.pipeId}">Copy Data & Edit</div>
+                    </div>
+                </div>
+            }
+        </div>
+        
+    </div>
 
-<button [routerLink]="['/lab']" [queryParams]="{fromLabId: lab.data.id}">Create Your Copy</button>
-<button [routerLink]="['/lab']" [queryParams]="{fromModelId: lab.data.details?.modelId}">Use Model as Startingpoint</button>
-<button [routerLink]="['/lab']" [queryParams]="{fromDataId: lab.data.details?.pipeId}">Use Data as Startingpoint</button>
+    <button (click)="printModel()">model</button>
 
-//TODO: Invites, permission storing and handling, browse type checking
+    <app-model [modelInfo]="lab.data.model" [activeDragType]="activeDragType" (finishDrag)="finishDrag()" (configureLayer)="configureLayer($event)"></app-model>
+
+    <app-pipe></app-pipe>
+    <app-add-layer (dragLayer)="dragLayer($event)" (prepareLayer)="prepareLayer($event)"></app-add-layer>
+    <app-train-conf (startTraining)="startTraining()" [clearForTraining]="clearForTraining"></app-train-conf>
+    <div id="fps" style="position: fixed; top: 0; left: 50%;">FPS:{{ renderer.sma.getMean() }}</div>
+    @if (configLayerId) {
+        <app-layer-conf [layerId]="configLayerId"></app-layer-conf>
+    }
+</div>
+
+
+<!-- TODO: Invites, permission storing and handling, browse type checking -->
 
 @if (showToast) {
     <div class="toast">

@@ -6,12 +6,12 @@ import { map } from 'rxjs';
 export const hasLabAccessGuard: CanActivateFn = (route, state) => {
   const router = inject(Router)
   const api = inject(ApiService)
-  return api.get("get-access/"+route.paramMap.get("labId")).pipe(
-    map((accessLevel: string) => {
-        if (["owning", "writing", "viewing"].includes(accessLevel)) {
+  return api.get("lab-authorization/"+route.paramMap.get("labId")).pipe(
+    map((authorization: string) => {
+        if (["owning", "viewing"].includes(authorization)) {
             return true
         } else {
-            router.navigate(['/join']);
+            router.navigate(['/404']);
             return false
         }
     })

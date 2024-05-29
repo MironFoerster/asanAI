@@ -9,15 +9,19 @@ services:
         - "8000:8000"
       depends_on:
         - db
+      networks:
+        - asanai_net
 
   frontend:
       build: ./frontend
-      command: ng serve --host 0.0.0.0
+      command: ng serve --host 0.0.0.0 --disable-host-check --poll=2000
       volumes:
         - ./frontend:/app
         - node_modules:/app/node_modules
       ports:
         - "4200:4200"
+      networks:
+        - asanai_net
 
   db:
       image: postgres:13
@@ -27,7 +31,13 @@ services:
         POSTGRES_PASSWORD: mypassword
       volumes:
         - postgres_data:/var/lib/postgresql/data/
+      networks:
+        - asanai_net
 
 volumes:
   postgres_data:
   node_modules:
+
+networks:
+ asanai_net:
+    driver: bridge

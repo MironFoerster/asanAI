@@ -50,6 +50,7 @@ body
     text-align: center
 
 
+
 span, div
     color: $black
 
@@ -105,9 +106,9 @@ button
 
 .button-funky
     background: $white
-    padding: 0.4em 0.8em
+    //padding: 0.4em 0.8em
     color: var(--purple)
-    border: 2px solid var(--purple)
+    border: 1.5px solid var(--purple)
 
     &:hover, &:focus
         background: var(--purple)
@@ -115,9 +116,9 @@ button
 
 .button-shy
     background: $white
-    padding: 0.4em 0.8em
+    //padding: 0.4em 0.8em
     color: $black
-    border: 2px solid $black
+    border: 1.5px solid $black
 
     &:hover, &:focus
         background: $black
@@ -177,3 +178,65 @@ input
         border: 1.5px solid var(--black) !important
 
 
+.dropdown
+    font-size: 20px
+    display: inline-block
+    // flex-direction: column
+    // align-items: center
+    // justify-content: flex-start
+    height: 0
+    width: auto
+    overflow: visible
+ 
+    .split-button
+        border-radius: .5em
+        font-family: "big"
+        text-align: center
+        transition: color 0.1s ease-in-out, background 0.1s ease-in-out, box-shadow 0.2s ease-in-out
+        border: 2px solid black
+        background: black
+        display: flex
+        justify-content: space-between
+        align-items: stretch
+        gap: 2px
+        overflow: hidden
+        .main-button
+            background: white
+            border: none
+            border-radius: 0
+            
+        .drop-button
+            background: white
+            border: none
+            border-radius: 0
+            .arrow
+                width: 0
+                height: 0
+                border: 4px solid white
+                border-right-color: black
+                border-bottom-color: black
+                transform: translateY(-25%) rotate(45deg)
+
+    .dropdown-content
+        background: gray
+        margin-top: 5px
+        width: 100%
+        max-height: 100px
+        opacity: 0
+        display: flex
+        flex-direction: column
+        gap: 1px
+        transform: scale(.95) translateY(-5px)
+        transition: 0.2s ease-out transform, 0.2s ease-out opacity
+        border-radius: .5em
+        overflow: hidden
+        box-shadow: 0 0 5px #00000062
+
+        &.dropped
+            opacity: 1
+            transform: scale(1) translateY(0)
+
+        button
+            border: none
+            border-radius: 0
+            background: white

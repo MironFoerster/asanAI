@@ -18,7 +18,9 @@ export class AppComponent implements OnInit, OnDestroy {
   currentRoute: string = "";
   isSignIn: boolean = false;
   isSignUp: boolean = false;
+  isLab: boolean = false;
   private destroy$ = new Subject<void>();
+  isDashboard: boolean = false;
   
   ngOnInit() {
     this.router.events.pipe(
@@ -28,6 +30,8 @@ export class AppComponent implements OnInit, OnDestroy {
       this.currentRoute = event.url;
       this.isSignIn = this.currentRoute.includes("signin")
       this.isSignUp = this.currentRoute.includes("signup")
+      this.isDashboard = this.currentRoute.includes("dashboard")
+      this.isLab = this.currentRoute.includes("lab") && !this.currentRoute.includes("labs")
     });
   }
 

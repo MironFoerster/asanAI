@@ -4,7 +4,23 @@
     @if (isLabDetails(itemDetails)) {
         <h2>{{ itemDetails.name }}</h2>
         <h3>by {{ itemDetails.username }}</h3>
-        <button [routerLink]="['/lab', itemDetails.id]">{{ itemDetails.access_level == "owning"? "Open": "View"}}({{ itemDetails.access_level }})</button>
+        <div>
+            @if (!!itemDetails.pipe_source) {
+                Data from {{ itemDetails.pipe_source.name }}
+                @if (!!itemDetails.pipe_source.lab) {
+                    from Lab {{ itemDetails.pipe_source.lab.name }}
+                }
+            }
+        </div>
+        <div>
+            @if (!!itemDetails.model_source) {
+                Model from {{ itemDetails.model_source.name }}
+                @if (!!itemDetails.model_source.lab) {
+                    from Lab {{ itemDetails.model_source.lab.name }}
+                }
+            }
+        </div>
+        <button [routerLink]="['/lab', itemDetails.id]">{{ itemDetails.authorization == "owning"? "Open": "View"}}({{ itemDetails.authorization }})</button>
         <button [routerLink]="['/lab']" [queryParams]="{fromLabId: itemDetails.id}">Create Your Copy</button>
         <button [routerLink]="['/lab']" [queryParams]="{fromModelId: itemDetails.modelId}">Use Model as Startingpoint</button>
         <button [routerLink]="['/lab']" [queryParams]="{fromDataId: itemDetails.pipeId}">Use Data as Startingpoint</button>

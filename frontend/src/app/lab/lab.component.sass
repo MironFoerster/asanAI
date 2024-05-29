@@ -1,0 +1,70 @@
+#lab-container
+    position: relative
+    height: 100vh
+    width: 100vw
+    padding: 0
+    margin: 0
+    
+#lab-header
+    position: fixed
+    top: 0
+    left: 0
+    width: 100%
+    height: 65px
+    display: flex
+    align-items: stretch
+    justify-content: space-between
+    background: transparent
+    pointer-events: none
+    padding: 8px
+
+    *
+        *
+            pointer-events: auto
+
+    #right-header
+        display: flex
+        align-items: stretch
+        justify-content: space-between
+        gap: 10px
+
+    #left-header
+        display: flex
+        align-items: stretch
+        justify-content: space-between
+        gap: 10px
+
+        #lab-title
+            display: flex
+            align-items: center
+            gap: 10px
+            border-radius: 10px
+            cursor: pointer
+            font-size: 20px
+            font-family: "big"
+            font-weight: 800
+            margin: 0
+            padding: 2px 12px
+            background: white
+            box-shadow: 0 0 7px #00000034
+            &::after
+                font-size: 14px
+                font-family: "mid"
+                font-weight: 500
+                content: var(--by-content, none)
+                border-radius: 8px
+                padding: 2px 5px
+                background: lighten(#6c1fe7, 15)
+
+        #version-container
+            background: red
+
+            .main-button
+
+                &:after
+                    width: 0
+                    height: 0
+                    border: 4px solid white
+                    border-right-color: black
+                    border-bottom-color: black
+                    transform: translateY(-25%) rotate(45deg)

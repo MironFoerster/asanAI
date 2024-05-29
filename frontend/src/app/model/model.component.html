@@ -1,1 +1,7 @@
-<p>model works!</p>
+<canvas #modelCanvas id="model-canvas"
+(click)="handleClick($event)"
+(mousemove)="renderer.setPickPosition($event)"
+(mouseleave)="handleMouseleave($event)"
+(mouseenter)="handleMouseenter($event)"
+(mouseup)="handleMouseup($event)"
+></canvas>

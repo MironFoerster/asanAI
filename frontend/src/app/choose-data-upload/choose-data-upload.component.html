@@ -1,0 +1,17 @@
+<p>choose-data-upload works!</p>
+<input type="file" (change)="onFileChange($event)" accept=".csv">
+<button (click)="convertToTfjsDataset()" [disabled]="!csvFile">Convert to TensorFlow.js Dataset</button>
+@if (csvData.length) {
+ <table>
+    <tr>
+        @for (item of csvData[0] | keyvalue; track item.key) {<th>{{ item.key }}</th>}
+    </tr>
+    @for (row of csvData; track row) {
+        <tr>
+            @for (item of row | keyvalue; track item.key) {
+                <td>{{ item.value }}</td>
+            }
+        </tr>
+    }
+ </table>
+}

@@ -1,0 +1,6 @@
+<div id="layer-conf-container" [class.open]="true||!!layerId">
+    @for (config of model.protoLayers[layerId].config | keyvalue; track config.key) {
+        <label for="{{config.key}}"></label>
+        <input name="{{config.key}}" type="text" value="{{config.value}}">
+    }
+</div>

@@ -15,7 +15,7 @@ RUN npm install
 #RUN npm install -g @angular/cli@17.1.0
 EXPOSE 4200
 # start app
-CMD ng serve --host 0.0.0.0
+CMD ng serve --ssl --host 0.0.0.0
 
 # FOLLOWING FOR PRODUCTION POSSIBLY
 # # Stage 1: Build the Angular app

@@ -1,0 +1,6 @@
+@if (showWebcam) {
+    <video #video autoplay></video>
+    <button (click)="triggerSnapshot()">Take Photo</button>
+} @else {
+    off
+}

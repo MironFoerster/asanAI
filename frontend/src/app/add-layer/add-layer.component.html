@@ -1,0 +1,14 @@
+<div id="add-layer-cont" [class.dragging]="isDragging" (mouseup)="handleAnyMouseUp()">	
+    <div id="add-layer-scroller">
+        @for (group of GROUPED_LAYERS | keyvalue; track group.key) {
+            <div class="layer-choice-group">
+                @for (layerType of group.value; track layerType) {
+                    <div class="layer-choice" (click)="handleClick($event, layerType)"
+                    (mousedown)="handleMouseDown(layerType)">
+                        {{ layerType }}
+                    </div>
+                }
+            </div>
+        }
+    </div>
+</div>

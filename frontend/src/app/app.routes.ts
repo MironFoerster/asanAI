@@ -41,6 +41,10 @@ export const routes: Routes = [
     loadComponent: () => import("./space/space.component").then((m) => m.SpaceComponent),
     canActivate: [isAuthenticatedGuard, isSpaceMemberGuard]},
 
+    {path: "lab/:labId/:version",
+    loadComponent: () => import("./lab/lab.component").then((m) => m.LabComponent),
+    canActivate: [hasLabAccessGuard]},
+
     {path: "lab/:labId",
     loadComponent: () => import("./lab/lab.component").then((m) => m.LabComponent),
     canActivate: [isAuthenticatedGuard, hasLabAccessGuard]},

@@ -6,9 +6,11 @@ import { provideHttpClient, withFetch, withInterceptors } from '@angular/common/
 import { urlInterceptor } from './url.interceptor';
 import { tokenInterceptor } from './token.interceptor';
 import { FormsModule } from '@angular/forms';
+import { provideAnimations } from '@angular/platform-browser/animations';
 
 export const appConfig: ApplicationConfig = {
   providers: [
+    provideAnimations(),
     provideRouter(routes, withComponentInputBinding()),
     provideHttpClient(
       withFetch(),

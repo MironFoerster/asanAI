@@ -1,7 +1,8 @@
-import { ModelDetails } from "./model-details"
-
-export interface Model {
-    details: ModelDetails // "basic", "tfjs-pretrained", ?
-    modelUrl: string
-    summary: string
+export class Model { //  extends ModelDetails?
+    id?: string
+    name?: string
+    latest_v?: number
+    version!: { //TODO: bad, figure out how to do anonymous lab
+        v:number
+    }
    }

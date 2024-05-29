@@ -1,1 +1,31 @@
-<p>pipe works!</p>
+<div [class.maximized]="displayState == 'max'" (click)="toggleDisplayState()" id="pipe-container">
+    <div id="data-choose-tabs">
+        <input type="radio" id="tab1" name="tabs" [(ngModel)]="dataTab" value="curated">
+        <label for="tab1" class="tab-button">📁</label>
+         
+        <input type="radio" id="tab2" name="tabs" [(ngModel)]="dataTab" value="games">
+        <label for="tab2" class="tab-button">🎮</label>
+         
+        <input type="radio" id="tab3" name="tabs" [(ngModel)]="dataTab" value="camera">
+        <label for="tab3" class="tab-button">📷</label>
+         
+        <input type="radio" id="tab4" name="tabs" [(ngModel)]="dataTab" value="upload">
+        <label for="tab4" class="tab-button">⬆️</label>
+    </div>
+
+    @if (dataTab == "curated") {
+        <p>choose from our curated datasets</p>
+        <app-choose-data-curated></app-choose-data-curated>
+    } @else if (dataTab == "games") {
+        <p>play a game with ai input</p>
+        <app-choose-data-games></app-choose-data-games>
+    }
+    @else if (dataTab == "camera") {
+        <p>create your own classification dataset</p>
+        <app-choose-data-camera></app-choose-data-camera>
+    }
+    @else if (dataTab == "upload") {
+        <p>upload your own dataset</p>
+        <app-choose-data-upload></app-choose-data-upload>
+    }
+</div>

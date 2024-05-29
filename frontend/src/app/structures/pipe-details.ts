@@ -6,6 +6,7 @@ export class PipeDetails implements Details {
         public sourceType: string, // "minigame", "tfds-record", ?
         public dataCategory: string, // "image", "tabular", "minigame", ?
         public dataUrl: string,
+        public pipe_source: {"id": string, "name": string, "lab": {"id": string, "name": string}},
         public title: string,
         public summary: string,
         public description: string,

@@ -12,7 +12,6 @@ class CustomUserAdmin(UserAdmin):
                 'fields': (
                     'completed_lessons',
                     'learned_concepts',
-                    'left_off_at',
                 ),
             },
         ),
